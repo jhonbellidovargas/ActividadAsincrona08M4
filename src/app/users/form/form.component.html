@@ -1,0 +1,73 @@
+<section class="container">
+  <section class="row">
+    <section class="col-md-12">
+      <h2 class="text-center">Usuario</h2>
+    </section>
+  </section>
+  <section class="row">
+    <form class="col-md-12" novalidate>
+      <section class="form-group mt-2">
+        <label for="name">Nombre</label>
+        <input
+          #txtName
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="Nombre"
+          name="name"
+        />
+      </section>
+      <section class="form-group mt-2">
+        <label for="lastname">Apellidos</label>
+        <input
+          #txtLastName
+          type="text"
+          class="form-control"
+          id="lastname"
+          placeholder="Apellidos"
+          name="lastname"
+        />
+      </section>
+      <section class="form-group mt-2">
+        <label for="age">Edad</label>
+        <input
+          #txtAge
+          type="number"
+          class="form-control"
+          id="age"
+          placeholder="Edad"
+          name="age"
+        />
+      </section>
+      <button
+        class="btn btn-primary mt-4"
+        (click)="addUser(txtName.value, txtLastName.value, txtAge.value)"
+      >
+        Agregar
+      </button>
+    </form>
+  </section>
+  <section class="row">
+    <section class="col-md-12">
+      <table class="table table-striped mt-4">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Mayor de edad</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="users.length > 0">
+          <tr *ngFor="let user of users">
+            <td>{{ user.nombre }}</td>
+            <td>{{ user.apellido }}</td>
+            <td>{{ user.edad }}</td>
+            <td *ngIf="user.edad >= 18">Si</td>
+            <td *ngIf="user.edad < 18">No</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </section>
+</section>
